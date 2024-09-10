@@ -1,0 +1,32 @@
+import pygame
+pygame.init()
+
+# Set up display
+screen = pygame.display.set_mode((400, 300))
+clock = pygame.time.Clock()
+
+# Define colors
+RED = (255, 0, 0)
+
+# Circle's starting position
+x, y = 50, 150
+speed_x = 5
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Move the circle
+    x += speed_x
+    if x > 400:
+        x = 0
+
+    screen.fill((0, 0, 0))
+    pygame.draw.circle(screen, RED, (x, y), 20)
+    pygame.display.flip()
+
+    clock.tick(30)  # FPS
+
+pygame.quit()
